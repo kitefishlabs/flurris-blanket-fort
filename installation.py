@@ -27,6 +27,9 @@ def bytize3(pos, r, g, b, stop):
 # run = InstallRun(**{'serA':serA,'serB':serB})
 
 class Cereal():
+    """
+    Mock serial class to test locally
+    """
 
     def __init__(self, **params):
         self.label = str(params['label'])
@@ -39,25 +42,22 @@ class InstallRun():
 
     def __init__(self, **params):
         print("Start")
-        self.serA = Cereal(**{'label': 'serA'})  # params['serA']
-        self.serB = Cereal(**{'label': 'serB'})  # params['serB']
+        self.serA = params['serA']  # Cereal(**{'label': 'serA'})
+        self.serB = params['serB']  # Cereal(**{'label': 'serB'})
         self.pointsA = [[0, 0, 0] for i in range(NUMPIXELS)]
         self.pointsB = [[0, 0, 0] for i in range(NUMPIXELS)]
         self.pointsC = [[0, 0, 0] for i in range(NUMPIXELS)]
         self.pointsD = [[0, 0, 0] for i in range(NUMPIXELS)]
         self.clear_points()
         time.sleep(1)
-        print("A")
         self.flash_points(32)
         time.sleep(1)
         self.clear_points()
         time.sleep(1)
-        print("B")
         self.flash_points(32)
         time.sleep(1)
         self.flash_points(24)
         time.sleep(1)
-        print("C")
         self.clear_points()
         time.sleep(1)
         self.flash_points(24)
